@@ -4,19 +4,19 @@ var React = require('react'),
 		AppBar = mui.AppBar,
 		Paper = mui.Paper;
 
-var AppRow = require("./AppRow.jsx")
+
+var AppDay = require("./AppDay.jsx")
 var AppsStore = require('../stores/AppsStore')
 
+var appsData = []
+
 function getAppsState() {
-	return {
-		apps: []
-	};
+	return {data: appsData}
 }
 
-function setAppState(appsList) {
-	return {
-		apps: appsList
-	};
+function setAppState(data) {
+	appsData.push(data)
+	return {data: appsData}
 }
 
 var AppsList = React.createClass({
@@ -30,19 +30,19 @@ var AppsList = React.createClass({
 		AppsStore.removeChangeListener(this._onChange);
 	},
 	render: function() {
-		if (this.state.apps.length > 0) {
-			var self = this, apps = this.state.apps;
+		if (this.state.data.length > 0) {
+			var self = this, data = this.state.data;
 			return (
 					<div>
 						<Paper zDepth={2}>
-								<div className="container apps-container">
-									{
-									Object.keys(apps).map(function(app){
-										return (
-												 <AppRow key={apps[app].id} app={apps[app]} />
-										);
-									})}
-									</div>
+							<div className="container apps-container">
+								{
+										Object.keys(data).map(function(appsForDay){
+											return(
+													<AppDay apps={data[appsForDay]} />
+											)
+										})}
+							</div>
 						</Paper>
 					</div>
 			);
@@ -55,7 +55,7 @@ var AppsList = React.createClass({
 		}
 	},
 	_onChange: function() {
-		this.setState(setAppState(AppsStore.getApps()));
+		this.replaceState(setAppState(AppsStore.getAppsData()));
 	}
 });
 

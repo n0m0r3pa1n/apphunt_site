@@ -3,14 +3,14 @@ var EventEmitter = require('events').EventEmitter;
 var AppsConstants = require('../constants/AppsConstants');
 var _ = require('underscore');
 
-var apps = []
-function loadApps(data) {
-	apps = data;
+var data = {}
+function loadApps(newData) {
+	data = newData;
 }
 
 var AppsStore = _.extend({}, EventEmitter.prototype, {
-	getApps: function() {
-		return apps;
+	getAppsData: function() {
+		return data;
 	},
 	emitChange: function() {
 		this.emit('change');

@@ -2,10 +2,20 @@ var AppsActions = require("../actions/AppsActions")
 
 var $ = require("jquery")
 var baseURL = "https://apphunt.herokuapp.com/"
-var url = baseURL + "apps?date=2015-03-13&platform=Android&status=approved";
+var lastAppsDate = new Date();
 
 module.exports = {
 	getApps: function() {
+		this._getApps(new Date(), "Android", "all")
+	},
+	getAppsForPreviousDay: function () {
+		lastAppsDate.setDate(lastAppsDate.getDate() - 1)
+		this._getApps(lastAppsDate, "Android", "all");
+	},
+	_getApps: function(date, platform, status) {
+		lastAppsDate = date;
+		var dateStr = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+		var url = baseURL + "apps?date="+dateStr+"&platform="+platform+"&status="+status+"";
 		$.get(url, function(data, status) {
 			var apps = []
 			for(var i=0; i< data.apps.length; i++) {
@@ -15,7 +25,7 @@ module.exports = {
 				apps.push(app)
 			}
 
-			AppsActions.receiveApps(apps);
+			AppsActions.receiveApps({apps: apps, date: data.date, totalCount: data.totalCount});
 		});
 	}
 };

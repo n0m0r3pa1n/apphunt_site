@@ -10,6 +10,7 @@
 
 		var AppsAPI = require("./utils/AppsAPI")
 		AppsAPI.getApps();
+		AppsAPI.getAppsForPreviousDay();
     var routes = (
         <Route handler={Main} path="/">
             <DefaultRoute handler={AppsList} />
