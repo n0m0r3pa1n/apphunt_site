@@ -7,7 +7,7 @@ module.exports = {
     server: {
       // We're serving the src folder as well
       // for sass sourcemap linking
-      baseDir: [dest, src]
+      baseDir: [dest,	 src]
     },
     files: [
       dest + '/**'

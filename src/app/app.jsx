@@ -1,8 +1,8 @@
 (function () {
     var React = require('react'),
         injectTapEventPlugin = require("react-tap-event-plugin"),
-        Main = require('./components/main.jsx'),
-        Index = require('./components/index.jsx'),
+        Main = require('./components/Main.jsx'),
+				AppsList = require('./components/AppsList.jsx'),
         Router = require("react-router"),
         Route = Router.Route,
         DefaultRoute = Router.DefaultRoute;
@@ -12,7 +12,7 @@
 		AppsAPI.getApps();
     var routes = (
         <Route handler={Main} path="/">
-            <DefaultRoute handler={Index} />
+            <DefaultRoute handler={AppsList} />
         </Route>
     );
 

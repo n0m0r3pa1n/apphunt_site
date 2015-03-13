@@ -4,6 +4,7 @@ var React = require('react'),
 		AppBar = mui.AppBar,
 		Paper = mui.Paper;
 
+var AppRow = require("./AppRow.jsx")
 var AppsStore = require('../stores/AppsStore')
 
 function getAppsState() {
@@ -18,7 +19,7 @@ function setAppState(appsList) {
 	};
 }
 
-var Index = React.createClass({
+var AppsList = React.createClass({
 	getInitialState: function() {
 		return getAppsState();
 	},
@@ -31,15 +32,18 @@ var Index = React.createClass({
 	render: function() {
 		if (this.state.apps.length > 0) {
 			var self = this, apps = this.state.apps;
-			console.log(apps)
 			return (
 					<div>
-						{
-								Object.keys(this.state.apps).map(function(app){
-									return (
-											<p> {apps[app].name} </p>
-									);
-								})}
+						<Paper zDepth={2}>
+								<div className="container apps-container">
+									{
+									Object.keys(apps).map(function(app){
+										return (
+												 <AppRow key={apps[app].id} app={apps[app]} />
+										);
+									})}
+									</div>
+						</Paper>
 					</div>
 			);
 		} else {
@@ -55,4 +59,4 @@ var Index = React.createClass({
 	}
 });
 
-module.exports = Index;
+module.exports = AppsList;
