@@ -1,5 +1,7 @@
 var React = require("react"),
-		AppsStore = require("../stores/AppsStore")
+		AppsStore = require("../stores/AppsStore"),
+		RaisedButton = require('material-ui').RaisedButton,
+		FontIcon = require('material-ui').FontIcon;
 
 function getAppState() {
 	return {
@@ -18,9 +20,16 @@ var AppRow = React.createClass({
 					<div className="col-md-1">
 						<img src={app.icon} className="app-icon"/>
 					</div>
-					<div className="col-md-10">
+					<div className="col-md-8">
 						<h3>{app.name}</h3>
 						<p className="app-description">{app.description}</p>
+					</div>
+					<div className="col-md-3">
+						<h3></h3>
+						<p>
+							<RaisedButton label="Google Play" linkButton={true} href={app.url} secondary={true}>
+							</RaisedButton>
+						</p>
 					</div>
 				</div>
 		)

@@ -8,7 +8,8 @@ var AppsAPI = {
 	_getApps: function(date, platform, status, callback) {
 		lastAppsDate = date;
 		var dateStr = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
-		var url = baseURL + "apps?date="+dateStr+"&platform="+platform+"&status="+status+"";
+
+		var url = baseURL + "apps?date="+dateStr+"&platform="+platform+"&status="+status+"&pageSize=5&page=1";
 		$.get(url, function(data, status) {
 			var apps = []
 			for(var i=0; i< data.apps.length; i++) {

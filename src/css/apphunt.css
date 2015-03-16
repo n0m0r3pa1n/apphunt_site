@@ -16,3 +16,15 @@ h1 {
 .app-description {
     font-size: 17px;
 }
+
+.circle {
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.red-circle {
+    width: 11px;
+    height: 11px;
+    background: red;
+}

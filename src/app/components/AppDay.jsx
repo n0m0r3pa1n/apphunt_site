@@ -1,6 +1,7 @@
 var React = require("react"),
 		AppsStore = require("../stores/AppsStore")
 var AppRow = require("./AppRow.jsx")
+var MoreApps = require("./MoreApps.jsx")
 function getAppState() {
 	return {
 		app: {},
@@ -16,10 +17,16 @@ var AppDay = React.createClass({
 	render: function() {
 		var appsDay = this.props.apps;
 		var apps = appsDay.apps;
+		var totalCount = appsDay.totalCount;
 
 		var appsDate = new Date(appsDay.date);
 		var dateString = getDateString(appsDate)
-
+		var MoreAppsComponent;
+		if (totalCount > 5) {
+			MoreAppsComponent = <MoreApps />;
+		} else {
+			MoreAppsComponent = "";
+		}
 		return (
 			<div>
 				<h3>Apps for {dateString}</h3>
@@ -33,6 +40,7 @@ var AppDay = React.createClass({
 						);
 					})
 				}
+			{MoreAppsComponent}
 			</div>
 		)
 	}
