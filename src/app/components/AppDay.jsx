@@ -19,6 +19,7 @@ var AppDay = React.createClass({
 
 		var appsDate = new Date(appsDay.date);
 		var dateString = getDateString(appsDate)
+
 		return (
 			<div>
 				<h3>Apps for {dateString}</h3>
@@ -49,9 +50,14 @@ function getDateString(appsDate) {
 	} else if(isYesterday == true) {
 		return "yesterday";
 	} else {
-		return appsDate;
+		var month = (appsDate.getMonth() + 1)
+		return appsDate.getFullYear() + "-" + getDoubleDigitDate(month) + "-" + getDoubleDigitDate(appsDate.getDate());
 	}
+}
 
+function getDoubleDigitDate(date) {
+	var str = date < 10 ? "0" + date : date;
+	return str;
 }
 
 module.exports = AppDay
