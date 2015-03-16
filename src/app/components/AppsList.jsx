@@ -48,8 +48,8 @@ var AppsList = React.createClass({
 			);
 		} else {
 			return (
-					<div>
-						Empty
+					<div className="container apps-container">
+						Loading ...
 					</div>
 			);
 		}
