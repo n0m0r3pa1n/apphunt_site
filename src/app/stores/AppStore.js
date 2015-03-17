@@ -8,22 +8,22 @@ function loadApps(newData) {
 	data = newData;
 }
 
-var AppsStore = _.extend({}, EventEmitter.prototype, {
+var AppStore = _.extend({}, EventEmitter.prototype, {
 	getAppsData: function() {
 		return data;
 	},
-	emitChange: function() {
-		this.emit('change');
+	emitLoadMore: function() {
+		this.emit('loadMore');
 	},
 
 	// Add change listener
-	addChangeListener: function(callback) {
-		this.on('change', callback);
+	addLoadMoreListener: function(callback) {
+		this.on('loadMore', callback);
 	},
 
 	// Remove change listener
-	removeChangeListener: function(callback) {
-		this.removeListener('change', callback);
+	removeLoadMoreListener: function(callback) {
+		this.removeListener('loadMore', callback);
 	}
 })
 
@@ -33,7 +33,7 @@ AppDispatcher.register(function(payload) {
 	var text;
 
 	switch(action.actionType) {
-		case AppsConstants.RECEIVE_DATA:
+		case AppsConstants.LOAD_MORE_APPS:
 			loadApps(action.data);
 			break;
 
@@ -41,9 +41,10 @@ AppDispatcher.register(function(payload) {
 			return true;
 	}
 
-	AppsStore.emitChange();
+	// If action was responded to, emit change event
+	AppStore.emitLoadMore();
 
 	return true;
 })
 
-module.exports = AppsStore
+module.exports = AppStore

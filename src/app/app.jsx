@@ -9,9 +9,8 @@
     window.React = React;
 
 		var AppsAPI = require("./utils/AppsAPI")
-		AppsAPI.getApps(function () {
-		//	AppsAPI.getAppsForPreviousDay();
-		});
+		//AppsAPI.getApps();
+
     var routes = (
         <Route handler={Main} path="/">
             <DefaultRoute handler={AppsList} />

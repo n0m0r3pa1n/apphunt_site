@@ -7,6 +7,12 @@ var AppsActions = {
 			actionType: AppsConstants.RECEIVE_DATA,
 			data: data
 		})
+	},
+	loadMoreApps: function(data) {
+		AppDispatcher.handleAction({
+			actionType: AppsConstants.LOAD_MORE_APPS,
+			data: data
+		})
 	}
 };
 

@@ -1,29 +1,53 @@
 var React = require("react"),
-		AppsStore = require("../stores/AppsStore")
+		AppStore = require("../stores/AppStore")
 var AppRow = require("./AppRow.jsx")
 var MoreApps = require("./MoreApps.jsx")
-function getAppState() {
-	return {
-		app: {},
-		date: "",
-		totalCount: ""
-	};
-}
 
 var AppDay = React.createClass({
+	appsDay: {
+		apps: [],
+		date: "",
+		totalCount: 0
+	},
 	getInitialState: function() {
-		return getAppState();
+		return this.appsDay;
+	},
+	_loadMore: function() {
+		var data = AppStore.getAppsData();
+		var appDate = new Date(getFormattedDateString(new Date(this.appsDay.date)))
+		appDate.setMonth(appDate.getMonth() + 1)
+		appDate.setHours(0)
+		var receivedDate = new Date(data.date)
+		var areEqualDates = (+appDate === +receivedDate)
+		if(areEqualDates) {
+			this.setState(data)
+			return;
+		}
+
+	},
+	componentDidMount: function() {
+		AppStore.addLoadMoreListener(this._loadMore)
+	},
+	componentWillUnmount: function() {
+		AppStore.removeLoadMoreListener(this._loadMore);
 	},
 	render: function() {
-		var appsDay = this.props.apps;
-		var apps = appsDay.apps;
-		var totalCount = appsDay.totalCount;
+		var self = this;
+		this.appsDay = this.props.appDay;
 
-		var appsDate = new Date(appsDay.date);
+		var apps = this.appsDay.apps;
+		var totalCount = this.appsDay.totalCount;
+
+		if(this.state.apps !== null && this.state.apps.length > 0) {
+			apps = apps.concat(this.state.apps);
+		}
+
+		var appsDate = new Date(this.appsDay.date);
 		var dateString = getDateString(appsDate)
+
 		var MoreAppsComponent;
-		if (totalCount > 5) {
-			MoreAppsComponent = <MoreApps />;
+		if (apps.length < totalCount) {
+			MoreAppsComponent = <MoreApps appsDay={this.appsDay}/>;
 		} else {
 			MoreAppsComponent = "";
 		}
@@ -35,7 +59,7 @@ var AppDay = React.createClass({
 						return (
 								<div>
 									<p>{apps[app].date}</p>
-									<AppRow key={apps[app].id} app={appsDay.apps[app]} />
+									<AppRow key={apps[app].name} app={apps[app]} />
 								</div>
 						);
 					})
@@ -61,6 +85,10 @@ function getDateString(appsDate) {
 		var month = (appsDate.getMonth() + 1)
 		return appsDate.getFullYear() + "-" + getDoubleDigitDate(month) + "-" + getDoubleDigitDate(appsDate.getDate());
 	}
+}
+
+function getFormattedDateString(date) {
+	return date.getFullYear() + "-" + getDoubleDigitDate(date.getMonth()) + "-" + getDoubleDigitDate(date.getDate());
 }
 
 function getDoubleDigitDate(date) {

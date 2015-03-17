@@ -5,11 +5,11 @@ var baseURL = "https://apphunt.herokuapp.com/"
 var lastAppsDate = new Date();
 
 var AppsAPI = {
-	_getApps: function(date, platform, status, callback) {
+	_getApps: function(date, platform, status, pageSize, page, callback) {
 		lastAppsDate = date;
 		var dateStr = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
 
-		var url = baseURL + "apps?date="+dateStr+"&platform="+platform+"&status="+status+"&pageSize=5&page=1";
+		var url = baseURL + "apps?date="+dateStr+"&platform="+platform+"&status="+status+"&pageSize="+pageSize+"&page=" + page;
 		$.get(url, function(data, status) {
 			var apps = []
 			for(var i=0; i< data.apps.length; i++) {
@@ -20,18 +20,27 @@ var AppsAPI = {
 			}
 
 			if(callback !== undefined && callback !== null) {
-				callback();
+				callback(data);
 			}
-
-			AppsActions.receiveApps({apps: apps, date: data.date, totalCount: data.totalCount});
 		});
 	},
 	getApps: function(callback) {
-		this._getApps(new Date(), "Android", "all", callback)
+		this._getApps(new Date(), "Android", "all", 5, 1, function(data) {
+			AppsActions.receiveApps({apps: data.apps, date: data.date, totalCount: data.totalCount});
+		})
 	},
 	getAppsForPreviousDay: function (page) {
 		lastAppsDate.setDate(lastAppsDate.getDate() - 1)
-		AppsAPI._getApps(lastAppsDate, "Android", "all", null);
+		AppsAPI._getApps(lastAppsDate, "Android", "all", 5, 1, function(data) {
+			AppsActions.receiveApps({apps: data.apps, date: data.date, totalCount: data.totalCount});
+		});
+	},
+	getMoreApps: function(day, status, platform, page) {
+		page = page + 1;
+		date = new Date(day)
+		this._getApps(date, "Android", "all", 5, page, function (data) {
+			AppsActions.loadMoreApps({apps: data.apps, date: data.date, totalCount: data.totalCount});
+		});
 	}
 };
 
