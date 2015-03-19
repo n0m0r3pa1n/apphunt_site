@@ -7,7 +7,6 @@ var MoreApps = React.createClass({
 	appsDay: {},
 	currentPage: 1,
 	handleClick: function() {
-		console.log(this.props.platform)
 		AppsAPI.getMoreApps(this.appsDay.date, this.props.platform, "all", this.currentPage)
 		this.currentPage = this.currentPage + 1;
 	},

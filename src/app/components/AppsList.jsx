@@ -4,7 +4,6 @@ var React = require('react'),
 		AppBar = mui.AppBar,
 		Paper = mui.Paper
 		DropDownMenu = mui.DropDownMenu,
-Progress = require('react-progress'),
 		InfiniteScroll = require('react-infinite-scroll')(React);
 
 

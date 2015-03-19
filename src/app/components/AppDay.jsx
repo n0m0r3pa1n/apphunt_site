@@ -1,7 +1,8 @@
 var React = require("react"),
 		AppStore = require("../stores/AppStore")
 var AppRow = require("./AppRow.jsx")
-var MoreApps = require("./MoreApps.jsx")
+var MoreApps = require("./MoreApps.jsx");
+var moment = require('moment');
 
 var AppDay = React.createClass({
 	appsDay: {
@@ -17,7 +18,10 @@ var AppDay = React.createClass({
 		var appDate = new Date(getFormattedDateString(new Date(this.appsDay.date)))
 		appDate.setMonth(appDate.getMonth() + 1)
 		appDate.setHours(0)
-		var receivedDate = new Date(data.date)
+
+
+		var receivedDate = new Date(moment(data.date).format("YYYY-MM-DD"))
+		receivedDate.setHours(0);
 		var areEqualDates = (+appDate === +receivedDate)
 		if(areEqualDates) {
 			this.setState(data)
@@ -73,8 +77,8 @@ var AppDay = React.createClass({
 
 function getDateString(appsDate) {
 	var date = new Date();
-	var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-	var yesterday = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1)
+	var today = new Date(moment().format("YYYY-MM-DD"));
+	var yesterday = new Date(moment().subtract(1, 'days').format("YYYY-MM-DD"))
 
 	var isToday = (+appsDate === +today);
 	var isYesterday = (+appsDate === +yesterday);

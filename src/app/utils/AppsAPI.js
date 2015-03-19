@@ -1,6 +1,7 @@
 var AppsActions = require("../actions/AppsActions")
 
 var $ = require("jquery")
+var DateUtils = require('../utils/DateUtils')
 var baseURL = "https://apphunt.herokuapp.com/"
 var lastAppsDate = new Date();
 var lastAppsPlatform = "";
@@ -28,20 +29,20 @@ var AppsAPI = {
 	},
 	getApps: function(platform, callback) {
 		this._getApps(new Date(), platform, "all", 5, 1, function(data) {
-			AppsActions.receiveApps({apps: data.apps, date: data.date, totalCount: data.totalCount, platform: platform});
+			AppsActions.receiveApps({apps: data.apps, date: DateUtils.getDoubleDigitDate(data.date), totalCount: data.totalCount, platform: platform});
 		})
 	},
 	getAppsForPreviousDay: function (page) {
 		lastAppsDate.setDate(lastAppsDate.getDate() - 1)
 		AppsAPI._getApps(lastAppsDate, lastAppsPlatform, "all", 5, 1, function(data) {
-			AppsActions.receiveApps({apps: data.apps, date: data.date, totalCount: data.totalCount, platform: lastAppsPlatform});
+			AppsActions.receiveApps({apps: data.apps, date: DateUtils.getDoubleDigitDate(data.date), totalCount: data.totalCount, platform: lastAppsPlatform});
 		});
 	},
 	getMoreApps: function(day, platform, status, page) {
 		page = page + 1;
 		date = new Date(day)
 		this._getApps(date, platform, status, 5, page, function (data) {
-			AppsActions.loadMoreApps({apps: data.apps, date: data.date, totalCount: data.totalCount, platform: platform});
+			AppsActions.loadMoreApps({apps: data.apps, date: DateUtils.getDoubleDigitDate(data.date), totalCount: data.totalCount, platform: platform});
 		});
 	}
 };
