@@ -1,0 +1,30 @@
+.apps-container {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin: 0px !important;
+}
+
+.app-icon {
+    width: 80px;
+    height: 80px;
+    margin-top: 25px;
+}
+
+.app-description {
+    font-size: 17px;
+}
+
+.circle {
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.red-circle {
+    width: 11px;
+    height: 11px;
+    background: red;
+}
