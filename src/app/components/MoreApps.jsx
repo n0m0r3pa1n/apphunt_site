@@ -5,8 +5,11 @@ var React = require("react"),
 
 var MoreApps = React.createClass({
 	appsDay: {},
+	currentPage: 1,
 	handleClick: function() {
-		AppsAPI.getMoreApps(this.appsDay.date, "all", "android", 1)
+		console.log(this.props.platform)
+		AppsAPI.getMoreApps(this.appsDay.date, this.props.platform, "all", this.currentPage)
+		this.currentPage = this.currentPage + 1;
 	},
 	render: function() {
 		this.appsDay = this.props.appsDay;

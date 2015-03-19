@@ -3,6 +3,7 @@ var React = require('react'),
 		RaisedButton = mui.RaisedButton,
 		AppBar = mui.AppBar,
 		Paper = mui.Paper
+		DropDownMenu = mui.DropDownMenu,
 Progress = require('react-progress'),
 		InfiniteScroll = require('react-infinite-scroll')(React);
 
@@ -12,12 +13,21 @@ var AppsStore = require('../stores/AppsStore')
 var AppsAPI = require('../utils/AppsAPI')
 
 var appsData = []
+var menuItems = [
+	{ payload: '2', text: 'Android' },
+	{ payload: '3', text: 'iOS' }
+];
+var lastLoadedPlatform = menuItems[0].text;
 
 function getAppsState() {
 	return {data: appsData}
 }
 
 function setAppState(data) {
+	if(data.platform !== lastLoadedPlatform) {
+		appsData = []
+	}
+	lastLoadedPlatform = data.platform;
 	appsData.push(data)
 	return {data: appsData}
 }
@@ -35,17 +45,22 @@ var AppsList = React.createClass({
 	},
 	_loadMore: function(page) {
 		if(page === 1) {
-			AppsAPI.getApps(null)
+			AppsAPI.getApps(lastLoadedPlatform, null)
 		} else {
 			AppsAPI.getAppsForPreviousDay()
 		}
 	},
+	_onMenuItemSelected: function(e, selectedIndex, menuItem) {
+		AppsAPI.getApps(menuItem.text);
+	},
 	render: function() {
 		var self = this, data = this.state.data;
+
 		return (
 				<div>
 					<Paper zDepth={2}>
 						<div className="container apps-container">
+							<DropDownMenu menuItems={menuItems} onChange={this._onMenuItemSelected}/>
 							<InfiniteScroll
 									pageStart={0}
 									loadMore={self._loadMore}
@@ -55,7 +70,7 @@ var AppsList = React.createClass({
 								{
 										Object.keys(data).map(function(appsForDay){
 											return(
-													<AppDay key={data[appsForDay].date} appDay={data[appsForDay]} />
+													<AppDay key={data[appsForDay].date} appDay={data[appsForDay]} platform={data[appsForDay].platform} />
 											)
 										})}
 							</InfiniteScroll>

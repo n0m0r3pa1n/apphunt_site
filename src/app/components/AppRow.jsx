@@ -2,6 +2,8 @@ var React = require("react"),
 		AppsStore = require("../stores/AppsStore"),
 		RaisedButton = require('material-ui').RaisedButton,
 		FontIcon = require('material-ui').FontIcon;
+var GooglePlayButton = require('./buttons/GooglePlayButton');
+var AppleStoreButton = require('./buttons/AppleStoreButton');
 
 function getAppState() {
 	return {
@@ -15,6 +17,11 @@ var AppRow = React.createClass({
 	},
 	render: function() {
 		var app = this.props.app;
+		var platform = this.props.platform;
+		var button = <GooglePlayButton url={app.url} />
+		if(platform !== "Android") {
+			button = <AppleStoreButton url={app.url} />
+		}
 		return (
 				<div className="row">
 					<div className="col-md-1">
@@ -27,8 +34,7 @@ var AppRow = React.createClass({
 					<div className="col-md-3">
 						<h3></h3>
 						<p>
-							<RaisedButton label="Google Play" linkButton={true} href={app.url} secondary={true}>
-							</RaisedButton>
+							{button}
 						</p>
 					</div>
 				</div>

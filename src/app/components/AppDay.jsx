@@ -34,6 +34,7 @@ var AppDay = React.createClass({
 	render: function() {
 		var self = this;
 		this.appsDay = this.props.appDay;
+		var platform = this.props.platform;
 
 		var apps = this.appsDay.apps;
 		var totalCount = this.appsDay.totalCount;
@@ -47,7 +48,7 @@ var AppDay = React.createClass({
 
 		var MoreAppsComponent;
 		if (apps.length < totalCount) {
-			MoreAppsComponent = <MoreApps appsDay={this.appsDay}/>;
+			MoreAppsComponent = <MoreApps appsDay={this.appsDay} platform={platform}/>;
 		} else {
 			MoreAppsComponent = "";
 		}
@@ -59,7 +60,7 @@ var AppDay = React.createClass({
 						return (
 								<div>
 									<p>{apps[app].date}</p>
-									<AppRow key={apps[app].name} app={apps[app]} />
+									<AppRow key={apps[app].name} app={apps[app]} platform={platform} />
 								</div>
 						);
 					})
