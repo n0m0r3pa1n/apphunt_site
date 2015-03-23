@@ -25,11 +25,16 @@ var AppDetails = React.createClass({
 	},
 	componentDidMount: function() {
 		AppStore.addLoadAppDetailsListener(this._loadAppDetails)
+        if(this.props.params.appId !== undefined) {
+            this.refs.rightDrawer.open();
+        }
 	},
 	componentWillUnmount: function() {
 		AppStore.addLoadAppDetailsListener(this._loadAppDetails);
 	},
 	render: function() {
+        console.log(this.props)
+
         var menuItems = [
 			{ route: 'get-started', text: 'Get Started' },
 			{ route: 'css-framework', text: 'CSS Framework' },

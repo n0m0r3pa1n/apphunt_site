@@ -32,9 +32,6 @@ function setAppState(data) {
 }
 
 var AppsList = React.createClass({
-    contextTypes: {
-        router: React.PropTypes.func
-    },
 	_hasMore: true,
 	getInitialState: function() {
 		return getAppsState();

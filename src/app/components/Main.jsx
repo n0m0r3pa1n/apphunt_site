@@ -17,9 +17,9 @@ var Main = React.createClass({
 					<AppBar title="AppHunt - BEST NEW apps every day">
 						<Paper/>
 					</AppBar>
-					<AppDetails />
+					<AppDetails {...test}/>
 					<div className="container apps-container">
-						<RouteHandler {...test} />
+						<RouteHandler />
 					</div>
 				</div>
 		)
