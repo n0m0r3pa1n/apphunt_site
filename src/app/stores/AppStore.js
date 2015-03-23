@@ -4,7 +4,7 @@ var AppsConstants = require('../constants/AppsConstants');
 var _ = require('underscore');
 
 var data = {}
-function loadApps(newData) {
+function setData(newData) {
 	data = newData;
 }
 
@@ -16,11 +16,19 @@ var AppStore = _.extend({}, EventEmitter.prototype, {
 		this.emit('loadMore');
 	},
 
+	emitLoadAppDetails: function() {
+		this.emit('loadAppDetails');
+	},
+	addLoadAppDetailsListener: function(callback) {
+		this.on('loadAppDetails', callback);
+	},
+	removeLoadAppDetailsListener: function(callback) {
+		this.removeListener('loadAppDetails', callback);
+	},
 	// Add change listener
 	addLoadMoreListener: function(callback) {
 		this.on('loadMore', callback);
 	},
-
 	// Remove change listener
 	removeLoadMoreListener: function(callback) {
 		this.removeListener('loadMore', callback);
@@ -34,15 +42,16 @@ AppDispatcher.register(function(payload) {
 
 	switch(action.actionType) {
 		case AppsConstants.LOAD_MORE_APPS:
-			loadApps(action.data);
+			setData(action.data);
+			AppStore.emitLoadMore();
 			break;
-
+		case AppsConstants.LOAD_APP_DETAILS:
+			setData(action.data);
+			AppStore.emitLoadAppDetails();
+			break
 		default:
 			return true;
 	}
-
-	// If action was responded to, emit change event
-	AppStore.emitLoadMore();
 
 	return true;
 })

@@ -9,7 +9,7 @@ var React = require('react'),
 
 var AppDay = require("./AppDay.jsx")
 var AppsStore = require('../stores/AppsStore')
-var AppsAPI = require('../utils/AppsAPI')
+var AppsAPI = require('../api/AppsAPI')
 
 var appsData = []
 var menuItems = [

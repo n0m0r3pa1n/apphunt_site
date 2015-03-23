@@ -28,3 +28,12 @@ h1 {
     height: 11px;
     background: red;
 }
+
+.appRow {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.appRow:hover {
+    background-color: rgba(0, 0, 0, 0.035);
+}
