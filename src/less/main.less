@@ -11,3 +11,39 @@
   text-align: center;
   padding-top: 200px;
 }
+
+@right-nav-width: (@desktop-keyline-increment * 12);
+@right-nav-color: @white;
+@desktop-right-nav-menu-item-height: 48px;
+
+.mui-right-nav {
+
+  .mui-right-nav-menu {
+    height: 100%;
+    position: fixed;
+    width: @right-nav-width;
+    background-color: @right-nav-color;
+    z-index: 10;
+    right: 0px;
+    top: 0px;
+    .ease-out();
+
+    .mui-menu {
+      .mui-menu-item {
+        height: @desktop-right-nav-menu-item-height;
+        line-height: @desktop-right-nav-menu-item-height;
+      }
+      a.mui-menu-item {
+        display: block;
+        text-decoration: none;
+        color: @body-text-color;
+      }
+    }
+  }
+
+  &.mui-closed {
+    .mui-right-nav-menu {
+      transform: translate3d((1 * @right-nav-width) - 10px, 0, 0);
+    }
+  }
+}

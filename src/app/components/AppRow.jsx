@@ -15,6 +15,9 @@ var AppRow = React.createClass({
 	getInitialState: function() {
 		return getAppState();
 	},
+	loadAppDetails: function() {
+		console.log("DETAILS");
+	},
 	render: function() {
 		var app = this.props.app;
 		var platform = this.props.platform;
@@ -23,7 +26,7 @@ var AppRow = React.createClass({
 			button = <AppleStoreButton url={app.url} />
 		}
 		return (
-				<div className="row">
+				<div className="row" onClick={this.loadAppDetails}>
 					<div className="col-md-1">
 						<img src={app.icon} className="app-icon"/>
 					</div>
