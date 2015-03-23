@@ -17,17 +17,11 @@ var { Route, DefaultRoute, RouteHandler, Link } = Router;
 
 
 var AppDetails = React.createClass({
-	contextTypes: {
-		router: React.PropTypes.func.isRequired
-	},
 	handleClick: function() {
 		//this.refs.rightDrawer.toggle();
 	},
 	_loadAppDetails: function() {
-		console.log(this.context.router)
-		var appId = this.context.router !== undefined ? this.context.router.getCurrentParams().appId : "";
-		console.log(appId)
-		//this.refs.rightDrawer.toggle();
+		this.refs.rightDrawer.toggle();
 	},
 	componentDidMount: function() {
 		AppStore.addLoadAppDetailsListener(this._loadAppDetails)
@@ -36,9 +30,7 @@ var AppDetails = React.createClass({
 		AppStore.addLoadAppDetailsListener(this._loadAppDetails);
 	},
 	render: function() {
-
-
-		var menuItems = [
+        var menuItems = [
 			{ route: 'get-started', text: 'Get Started' },
 			{ route: 'css-framework', text: 'CSS Framework' },
 			{ route: 'components', text: 'Components' },
@@ -50,7 +42,9 @@ var AppDetails = React.createClass({
 			},
 		];
 		return (
+            <div>
 				<RightNav ref="rightDrawer" docked={false} menuItems={menuItems} />
+            </div>
 		)
 	}
 });

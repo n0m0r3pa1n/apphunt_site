@@ -12,12 +12,14 @@
 
     var routes = (
         <Route handler={Main} path="/">
+            <Route handler={AppsList} name="apps" path="apps/:appId" />
             <DefaultRoute handler={AppsList} />
         </Route>
     );
 
-    Router.run(routes, function (Handler) {
-        React.render(<Handler/>, document.body);
+    Router.run(routes, function (Handler, state) {
+        var params = state.params;
+        React.render(<Handler params={params} />, document.body);
     });
 
     injectTapEventPlugin();

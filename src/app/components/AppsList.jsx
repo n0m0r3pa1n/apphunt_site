@@ -32,6 +32,9 @@ function setAppState(data) {
 }
 
 var AppsList = React.createClass({
+    contextTypes: {
+        router: React.PropTypes.func
+    },
 	_hasMore: true,
 	getInitialState: function() {
 		return getAppsState();
@@ -54,7 +57,6 @@ var AppsList = React.createClass({
 	},
 	render: function() {
 		var self = this, data = this.state.data;
-
 		return (
 				<div>
 					<Paper zDepth={2}>
