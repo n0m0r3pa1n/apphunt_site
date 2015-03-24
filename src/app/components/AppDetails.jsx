@@ -17,11 +17,10 @@ var { Route, DefaultRoute, RouteHandler, Link } = Router;
 
 
 var AppDetails = React.createClass({
-	handleClick: function() {
-		//this.refs.rightDrawer.toggle();
-	},
 	_loadAppDetails: function() {
 		this.refs.rightDrawer.toggle();
+        var app = AppStore.getAppsData();
+        this.setState({app: app})
 	},
 	componentDidMount: function() {
 		AppStore.addLoadAppDetailsListener(this._loadAppDetails)
@@ -33,22 +32,10 @@ var AppDetails = React.createClass({
 		AppStore.addLoadAppDetailsListener(this._loadAppDetails);
 	},
 	render: function() {
-        console.log(this.props)
-
-        var menuItems = [
-			{ route: 'get-started', text: 'Get Started' },
-			{ route: 'css-framework', text: 'CSS Framework' },
-			{ route: 'components', text: 'Components' },
-			{ type: MenuItem.Types.SUBHEADER, text: 'Resources' },
-			{
-				type: MenuItem.Types.LINK,
-				payload: 'https://github.com/callemall/material-ui',
-				text: 'GitHub'
-			},
-		];
+        var app = this.state !== null ? this.state.app : {};
 		return (
             <div>
-				<RightNav ref="rightDrawer" docked={false} menuItems={menuItems} />
+				<RightNav ref="rightDrawer" docked={false} app={app} />
             </div>
 		)
 	}
