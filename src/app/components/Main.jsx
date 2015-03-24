@@ -11,13 +11,12 @@ var React = require('react'),
 var AppDetails = require('./AppDetails.jsx')
 var Main = React.createClass({
 	render: function() {
-        var test = this.props;
 		return (
 				<div>
 					<AppBar title="AppHunt - BEST NEW apps every day">
 						<Paper/>
 					</AppBar>
-					<AppDetails {...test}/>
+					<AppDetails {...this.props}/>
 					<div className="container apps-container">
 						<RouteHandler />
 					</div>

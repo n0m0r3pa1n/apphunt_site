@@ -37,3 +37,43 @@ h1 {
 .appRow:hover {
     background-color: rgba(0, 0, 0, 0.035);
 }
+
+.app-details {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #00bcd4;
+}
+.app-details img {
+    margin: 10px;
+}
+
+.app-votes-btn {
+    color: white;
+    font-size:24px;
+}
+
+.createdby-avatar {
+    width: 8%;
+}
+
+
+.voter-avatar {
+    width: 5%;
+    margin: 5px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+.footer h3 {
+    margin-top: 0px !important;
+}
+
+.clear-margin-top {
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+}
