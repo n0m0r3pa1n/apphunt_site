@@ -2,7 +2,7 @@
     var React = require('react'),
         injectTapEventPlugin = require("react-tap-event-plugin"),
         Main = require('./components/Main.jsx'),
-		AppsList = require('./components/AppsList.jsx'),
+		AppsList = require('./components/appslist/AppsList.jsx'),
         Router = require("react-router"),
         Route = Router.Route,
         DefaultRoute = Router.DefaultRoute;

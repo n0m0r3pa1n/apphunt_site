@@ -1,10 +1,10 @@
 var React = require("react"),
-	AppsStore = require("../stores/AppsStore"),
+	AppsStore = require("../../stores/AppsStore"),
 	RaisedButton = require('material-ui').RaisedButton,
 	FontIcon = require('material-ui').FontIcon;
-var GooglePlayButton = require('./buttons/GooglePlayButton');
-var AppleStoreButton = require('./buttons/AppleStoreButton');
-var AppAPI = require('../api/AppAPI')
+var GooglePlayButton = require('./../buttons/GooglePlayButton');
+var AppleStoreButton = require('./../buttons/AppleStoreButton');
+var AppAPI = require('../../api/AppAPI')
 
 var Router = require('react-router');
 var { RouteHandler, Link } = Router;

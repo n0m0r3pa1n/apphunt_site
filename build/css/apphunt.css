@@ -3,7 +3,7 @@
     margin-bottom: 20px;
 }
 
-.mui-app-bar-title {
+h1 {
     margin: 0px !important;
 }
 
@@ -66,8 +66,7 @@
     bottom: 0;
     width: 100%;
     height: 60px;
-    color: white;
-    background-color: #00bcd4;
+    background-color: #f5f5f5;
 }
 
 .footer h3 {
@@ -77,4 +76,8 @@
 .clear-margin-top {
     margin-top: 0px !important;
     padding-top: 0px !important;
+}
+
+.app-day-title {
+    margin-bottom: 600px;
 }

@@ -1,5 +1,5 @@
 var React = require("react"),
-		AppStore = require("../stores/AppStore")
+		AppStore = require("../../stores/AppStore")
 var AppRow = require("./AppRow.jsx")
 var MoreApps = require("./MoreApps.jsx");
 var moment = require('moment');
@@ -57,8 +57,8 @@ var AppDay = React.createClass({
 			MoreAppsComponent = "";
 		}
 		return (
-			<div>
-				<h3>Apps for {dateString}</h3>
+			<div className="app-day-title">
+				<h3><span className="">Apps for {dateString}</span></h3>
 				{
 					Object.keys(apps).map(function(app){
 						return (

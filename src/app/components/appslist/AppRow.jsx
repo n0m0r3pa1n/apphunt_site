@@ -1,10 +1,11 @@
 var React = require("react"),
-	AppsStore = require("../stores/AppsStore"),
+	AppsStore = require("../../stores/AppsStore"),
 	RaisedButton = require('material-ui').RaisedButton,
 	FontIcon = require('material-ui').FontIcon;
-var GooglePlayButton = require('./buttons/GooglePlayButton');
-var AppleStoreButton = require('./buttons/AppleStoreButton');
-var AppAPI = require('../api/AppAPI')
+var GooglePlayButton = require('./../buttons/GooglePlayButton');
+var AppleStoreButton = require('./../buttons/AppleStoreButton');
+var AppAPI = require('../../api/AppAPI')
+var NavUtils = require('../../utils/NavUtils')
 
 var Router = require('react-router');
 var { RouteHandler, Link } = Router;
@@ -21,7 +22,8 @@ var AppRow = React.createClass({
 		return getAppState();
 	},
 	loadAppDetails: function() {
-		AppAPI.getAppDetails(this.appId);
+        NavUtils.setUrl('apps/' + this.appId)
+		//AppAPI.getAppDetails(this.appId);
 	},
 	render: function() {
 		var app = this.props.app;
@@ -31,6 +33,11 @@ var AppRow = React.createClass({
 		if(platform !== "Android") {
 			button = <AppleStoreButton url={app.url} />
 		}
+
+        var params = {
+            appId: this.appId
+        }
+
 		return (
 			<div className="row col-md-12 appRow" onClick={this.loadAppDetails}>
 				<div className="col-md-1">

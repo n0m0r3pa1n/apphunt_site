@@ -1,6 +1,6 @@
 var React = require("react"),
-		AppsStore = require("../stores/AppsStore"),
-		AppsAPI = require("../api/AppsAPI");
+		AppsStore = require("../../stores/AppsStore"),
+		AppsAPI = require("../../api/AppsAPI");
 
 
 var MoreApps = React.createClass({

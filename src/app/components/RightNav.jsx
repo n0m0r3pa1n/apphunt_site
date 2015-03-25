@@ -9,6 +9,8 @@ var React = require('react'),
 	RaisedButton = mui.RaisedButton,
 	Paper = mui.Paper,
 	Menu = mui.Menu;
+
+var NavUtils = require('../utils/NavUtils')
 var injectTapEventPlugin = require("react-tap-event-plugin");
 
 var RightNav = React.createClass({
@@ -37,11 +39,13 @@ var RightNav = React.createClass({
 	},
 
 	toggle: function() {
+
 		this.setState({ open: !this.state.open });
 		return this;
 	},
 
 	close: function() {
+        NavUtils.clearWindowUrl();
 		this.setState({ open: false });
 		return this;
 	},
