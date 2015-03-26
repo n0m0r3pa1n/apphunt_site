@@ -40,7 +40,7 @@ h1 {
 
 .app-details {
     color: rgba(255, 255, 255, 0.87);
-    background-color: #00bcd4;
+    background-color: #23a2eb;
 }
 .app-details img {
     margin: 10px;
@@ -54,7 +54,6 @@ h1 {
 .createdby-avatar {
     width: 8%;
 }
-
 
 .voter-avatar {
     width: 5%;
@@ -84,4 +83,13 @@ h1 {
 
 .noScroll {
     overflow: hidden;
+    position:fixed;
+}
+
+.mui-app-bar {
+    background-color: #23a2eb !important;
+}
+
+.mui-raised-button.mui-is-secondary .mui-raised-button-container {
+    background-color: #23a2eb !important;
 }
