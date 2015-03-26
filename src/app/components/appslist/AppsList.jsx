@@ -9,6 +9,7 @@ var React = require('react'),
 
 var AppDay = require("./AppDay.jsx")
 var AppsStore = require('../../stores/AppsStore')
+var AppStore = require('../../stores/AppStore')
 var AppsAPI = require('../../api/AppsAPI')
 
 var appsData = []
@@ -33,6 +34,7 @@ function setAppState(data) {
 
 var AppsList = React.createClass({
 	_hasMore: true,
+	_selectedPlatformIndex: 0,
 	getInitialState: function() {
 		return getAppsState();
 	},
@@ -49,16 +51,12 @@ var AppsList = React.createClass({
 			AppsAPI.getAppsForPreviousDay()
 		}
 	},
-	_onMenuItemSelected: function(e, selectedIndex, menuItem) {
-		AppsAPI.getApps(menuItem.text);
-	},
 	render: function() {
 		var self = this, data = this.state.data;
 		return (
 				<div>
 					<Paper zDepth={2}>
 						<div className="container apps-container">
-							<DropDownMenu menuItems={menuItems} onChange={this._onMenuItemSelected}/>
 							<InfiniteScroll
 									pageStart={0}
 									loadMore={self._loadMore}

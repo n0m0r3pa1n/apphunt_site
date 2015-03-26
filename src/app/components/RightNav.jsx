@@ -72,7 +72,9 @@ var RightNav = React.createClass({
 		var profilePicture = user !== undefined ? user.profilePicture : "";
 		var username = user !== undefined ? user.username : "";
 		var votes = app.votes !== undefined ? app.votes : [];
-		var marketButtonSrc = app.platform == "Android" ? "https://copy.com/thumbs_public/oK6dqa8AftpkzSAC/button-google-play.png?size=1024" : "https://copy.com/thumbs_public/w8vXIiTloaPGCkUV/button-app-store.png?size=1024";
+		var marketButtonSrc = app.platform == "Android" ?
+			"https://copy.com/thumbs_public/oK6dqa8AftpkzSAC/button-google-play.png?size=1024" :
+			"https://copy.com/thumbs_public/w8vXIiTloaPGCkUV/button-app-store.png?size=1024";
 
 		var marketButton = {
 			marginTop: "20%"
@@ -124,7 +126,7 @@ var RightNav = React.createClass({
 							<img src={marketButtonSrc} className="col-md-4 col-md-offset-4" style={marketButton}/>
 						</a>
 					</div>
-					<footer className="footer">
+					<footer className="footer secondary">
 						<h3 className="text-center">AppHunt</h3>
 					</footer>
 				</Paper>
