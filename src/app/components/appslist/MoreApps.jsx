@@ -12,8 +12,11 @@ var MoreApps = React.createClass({
 	},
 	render: function() {
 		this.appsDay = this.props.appsDay;
+        var style = {
+            marginTop: 20
+        }
 		return (
-				<div className="col-md-12 text-center" onClick={this.handleClick}>
+				<div className="col-md-12 text-center" onClick={this.handleClick} style={style}>
 						<span className="circle red-circle"></span>
 						<span className="circle red-circle"></span>
 						<span className="circle red-circle"></span>

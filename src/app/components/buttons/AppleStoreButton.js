@@ -8,7 +8,7 @@ var AppleStoreButton = React.createClass({
 	render: function() {
 		var url = this.props.url;
 		return (
-				<RaisedButton label="Apple Store" linkButton={true} href={url} secondary={true}>
+				<RaisedButton label="Apple Store" linkButton={true} href={url} secondary={true} target={"_blank"}>
 				</RaisedButton>
 		)
 	},

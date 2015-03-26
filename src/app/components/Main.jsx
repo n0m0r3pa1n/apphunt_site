@@ -12,6 +12,7 @@ var AppDetails = require('./details/AppDetails.jsx')
 var AppStore = require('../stores/AppStore')
 var AppAPI = require('../api/AppAPI')
 var AppsAPI = require('../api/AppsAPI')
+var AppHuntApp = require('./AppHuntApp.jsx')
 
 var menuItems = [
 	{ payload: '2', text: 'Android' },
@@ -56,6 +57,7 @@ var Main = React.createClass({
 					</AppBar>
 					<AppDetails {...this.props}/>
 					<div className="container apps-container">
+                        <AppHuntApp/>
 						<RouteHandler />
 					</div>
 				</div>

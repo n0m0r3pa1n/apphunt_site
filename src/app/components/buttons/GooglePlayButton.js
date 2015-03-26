@@ -8,7 +8,7 @@ var GooglePlayButton = React.createClass({
 	render: function() {
 		var url = this.props.url;
 		return (
-		<RaisedButton label="Google Play" linkButton={true} href={url} secondary={true}>
+		<RaisedButton label="Google Play" linkButton={true} href={url} secondary={true} target={"_blank"}>
 		</RaisedButton>
 		)
 	},

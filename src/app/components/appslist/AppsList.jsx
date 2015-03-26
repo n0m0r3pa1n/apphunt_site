@@ -54,25 +54,23 @@ var AppsList = React.createClass({
 	render: function() {
 		var self = this, data = this.state.data;
 		return (
-				<div>
-					<Paper zDepth={2}>
-						<div className="container apps-container">
-							<InfiniteScroll
-									pageStart={0}
-									loadMore={self._loadMore}
-									hasMore={self._hasMore}
-									threshold={2}
-									loader={<div className="text-center"><strong>Loading</strong></div>}>
-								{
-										Object.keys(data).map(function(appsForDay){
-											return(
-													<AppDay key={data[appsForDay].date} appDay={data[appsForDay]} platform={data[appsForDay].platform} />
-											)
-										})}
-							</InfiniteScroll>
-						</div>
-					</Paper>
-				</div>
+            <Paper zDepth={2}>
+                <div className="container apps-container">
+                    <InfiniteScroll
+                            pageStart={0}
+                            loadMore={self._loadMore}
+                            hasMore={self._hasMore}
+                            threshold={2}
+                            loader={<div className="text-center"><strong>Loading</strong></div>}>
+                        {
+                                Object.keys(data).map(function(appsForDay){
+                                    return(
+                                            <AppDay key={data[appsForDay].date} appDay={data[appsForDay]} platform={data[appsForDay].platform} />
+                                    )
+                                })}
+                    </InfiniteScroll>
+                </div>
+            </Paper>
 		);
 	},
 	_onChange: function() {

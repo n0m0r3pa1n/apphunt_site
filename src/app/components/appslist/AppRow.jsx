@@ -1,7 +1,6 @@
 var React = require("react"),
 	AppsStore = require("../../stores/AppsStore"),
-	RaisedButton = require('material-ui').RaisedButton,
-	FontIcon = require('material-ui').FontIcon;
+    {RaisedButton, FloatingActionButton, FontIcon, FlatButton} = require('material-ui');
 var GooglePlayButton = require('./../buttons/GooglePlayButton');
 var AppleStoreButton = require('./../buttons/AppleStoreButton');
 var AppAPI = require('../../api/AppAPI')
@@ -29,15 +28,20 @@ var AppRow = React.createClass({
 		var app = this.props.app;
 		this.appId = app._id;
 		var platform = this.props.platform;
-		var button = <GooglePlayButton url={app.url} />
+		var button = <GooglePlayButton url={app.shortUrl} />
 		if(platform !== "Android") {
-			button = <AppleStoreButton url={app.url} />
+			button = <AppleStoreButton url={app.shortUrl} />
 		}
 
         var params = {
             appId: this.appId
         }
+        var votesBtnStyle = {
+            marginTop: "50%",
+            fontSize: 16,
+            color: "rgba(0, 0, 0, 0.54)"
 
+        }
 		return (
 			<div className="row col-md-12 appRow" onClick={this.loadAppDetails}>
 				<div className="col-md-1">
@@ -47,12 +51,21 @@ var AppRow = React.createClass({
 					<h3>{app.name}</h3>
 					<p className="app-description">{app.description}</p>
 				</div>
-				<div className="col-md-3">
+				<div className="col-md-2">
 					<h3></h3>
 					<p>
 						{button}
 					</p>
 				</div>
+                <div className="col-md-1">
+                    <div style={votesBtnStyle}>
+                        <p>
+                            <FloatingActionButton disabled={true} label={app.votesCount} iconClassName="muidocs-icon-action-grade" >
+                                <span>{app.votesCount}</span>
+                            </FloatingActionButton>
+                        </p>
+                    </div>
+                </div>
 			</div>
 		)
 	},

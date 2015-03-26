@@ -116,7 +116,7 @@ var RightNav = React.createClass({
 					</div>
 					<div className="col-md-12">
 						<p style={createdByStyle}><img className="createdby-avatar img-circle" src={profilePicture} />  &nbsp;Posted by
-							<span style={usernameStyle}>@{username}</span>
+							<span style={usernameStyle}> @{username}</span>
 						</p>
 						<hr />
 					</div>
