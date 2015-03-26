@@ -17,6 +17,7 @@ var Main = React.createClass({
         if(appId !== undefined) {
             AppAPI.getAppDetails(appId);
         }
+
 		return (
 				<div>
 					<AppBar title="AppHunt - BEST NEW apps every day">

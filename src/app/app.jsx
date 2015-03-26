@@ -5,6 +5,7 @@
 		AppsList = require('./components/appslist/AppsList.jsx'),
         Router = require("react-router"),
         Route = Router.Route,
+		HashLocation = Router.HashLocation,
         DefaultRoute = Router.DefaultRoute;
     window.React = React;
 
@@ -17,7 +18,7 @@
         </Route>
     );
 
-    Router.run(routes, function (Handler, state) {
+    Router.run(routes, HashLocation, function (Handler, state) {
         var params = state.params;
         React.render(<Handler params={params} />, document.body);
     });

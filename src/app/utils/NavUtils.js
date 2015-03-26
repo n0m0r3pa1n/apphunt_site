@@ -6,12 +6,13 @@ var NavUtils = {
         if(this.scr != 0) {
             document.body.scrollTop = this.scr;
         }
-        window.location.hash = "#/";
+		history.pushState(null,null,"#/");
+        //window.location.hash = "#/";
     },
     setUrl: function(url) {
         this.scr = document.body.scrollTop;
-        window.location.hash =  "#/" + url;
-
+		//window.location.hash =  "#/" + url;
+		history.pushState(null,null,"#/" + url);
     }
 };
 

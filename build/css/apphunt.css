@@ -81,3 +81,7 @@ h1 {
 .app-day-title {
     margin-bottom: 600px;
 }
+
+.noScroll {
+    overflow: hidden;
+}

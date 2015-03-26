@@ -4,6 +4,7 @@ var React = require('react'),
 	mui = require('material-ui'),
 	Router = require("react-router"),
 	RouteHandler = Router.RouteHandler,
+	HashLocation = Router.HashLocation,
 	FlatButton = mui.FlatButton,
 	MenuItem = mui.MenuItem,
 	RightNav = require('./../RightNav.jsx'),
@@ -29,9 +30,14 @@ var AppDetails = React.createClass({
 	componentWillUnmount: function() {
 		AppStore.addLoadAppDetailsListener(this._loadAppDetails);
 	},
+	urlChanged: function(route) {
+		if(route.path === "/") {
+			this.refs.rightDrawer.close();
+		}
+	},
 	render: function() {
+		HashLocation.addChangeListener(this.urlChanged);
         var app = this.state !== null ? this.state.app : {};
-
 		return (
             <div>
 				<RightNav ref="rightDrawer" docked={false} app={app} />

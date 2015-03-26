@@ -23,7 +23,7 @@ var AppRow = React.createClass({
 	},
 	loadAppDetails: function() {
         NavUtils.setUrl('apps/' + this.appId)
-		//AppAPI.getAppDetails(this.appId);
+		AppAPI.getAppDetails(this.appId);
 	},
 	render: function() {
 		var app = this.props.app;

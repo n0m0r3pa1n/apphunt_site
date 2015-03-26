@@ -55,7 +55,6 @@ h1 {
     width: 8%;
 }
 
-
 .voter-avatar {
     width: 5%;
     margin: 5px;
@@ -80,4 +79,9 @@ h1 {
 
 .app-day-title {
     margin-bottom: 600px;
+}
+
+.noScroll {
+    overflow: hidden;
+    position:fixed;
 }

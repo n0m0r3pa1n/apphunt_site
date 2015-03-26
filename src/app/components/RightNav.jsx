@@ -45,7 +45,7 @@ var RightNav = React.createClass({
 	},
 
 	close: function() {
-        NavUtils.clearWindowUrl();
+		NavUtils.clearWindowUrl();
 		this.setState({ open: false });
 		return this;
 	},
@@ -103,16 +103,19 @@ var RightNav = React.createClass({
 								<h1>{app.name}</h1>
 								<h3>{app.description}</h3>
 							</div>
-							<div>
-								<p><FloatingActionButton primary={true} label={app.votesCount} iconClassName="muidocs-icon-action-grade">
-									<span className="app-votes-btn">{app.votesCount}</span>
-								</FloatingActionButton>
+							<div className="col-md-1 col-md-offset-1">
+								<p>
+									<FloatingActionButton primary={true} label={app.votesCount} iconClassName="muidocs-icon-action-grade">
+										<span className="app-votes-btn">{app.votesCount}</span>
+									</FloatingActionButton>
 								</p>
 							</div>
 						</div>
 					</div>
 					<div className="col-md-12">
-						<p style={createdByStyle}><img className="createdby-avatar img-circle" src={profilePicture} />  &nbsp;Posted by <span style={usernameStyle}>@{username}</span></p>
+						<p style={createdByStyle}><img className="createdby-avatar img-circle" src={profilePicture} />  &nbsp;Posted by
+							<span style={usernameStyle}>@{username}</span>
+						</p>
 						<hr />
 					</div>
 					<Voters votes={votes} />
