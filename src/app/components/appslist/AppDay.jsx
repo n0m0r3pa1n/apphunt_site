@@ -57,7 +57,7 @@ var AppDay = React.createClass({
 			MoreAppsComponent = "";
 		}
 		return (
-			<div className="app-day-title">
+			<div className="app-day">
 				<h3><span className="">Apps for {dateString}</span></h3>
 				{
 					Object.keys(apps).map(function(app){
