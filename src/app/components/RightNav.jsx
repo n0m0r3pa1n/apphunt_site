@@ -143,7 +143,7 @@ var RightNav = React.createClass({
                     </div>
                     <Voters votes={votes} />
 
-                    <footer className="footer secondary">
+                    <footer className="footer">
                         <h3 className="text-center">AppHunt</h3>
                     </footer>
                 </Paper>
