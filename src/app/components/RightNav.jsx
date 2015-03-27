@@ -76,6 +76,10 @@ var RightNav = React.createClass({
             "https://copy.com/thumbs_public/oK6dqa8AftpkzSAC/button-google-play.png?size=1024" :
             "https://copy.com/thumbs_public/w8vXIiTloaPGCkUV/button-app-store.png?size=1024";
 
+        var containerStyle = {
+            overflowY: "scroll"
+        }
+
         var marketButton = {
             display: "block"
         }
@@ -98,10 +102,10 @@ var RightNav = React.createClass({
             marginTop: 20
         }
         return (
-            <div className={classes}>
+            <div className={classes} >
 
         {overlay}
-                <Paper
+                <Paper style={containerStyle}
                     ref="clickAwayableElement"
                     className="mui-right-nav-menu"
                     zDepth={2}

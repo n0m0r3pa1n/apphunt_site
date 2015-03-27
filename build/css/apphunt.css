@@ -95,8 +95,8 @@
 }
 
 .noScroll {
-    overflow: hidden;
-    position:fixed;
+    overflow: hidden !important;
+    /*position:fixed;*/
 }
 
 .mui-app-bar {
