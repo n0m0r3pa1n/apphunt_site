@@ -15,6 +15,10 @@
     background-color: #64b5f6 !important;
 }
 
+.mui-right-nav .mui-right-nav-menu {
+    width: 40% !important;
+}
+
 .app-icon {
     width: 80px;
     height: 80px;
