@@ -15,10 +15,8 @@ var AppDay = React.createClass({
 	},
 	_loadMore: function() {
 		var data = AppStore.getAppsData();
-		var appDate = new Date(getFormattedDateString(new Date(this.appsDay.date)))
-		appDate.setMonth(appDate.getMonth() + 1)
+		var appDate = new Date(moment(this.appsDay.date).format("YYYY-MM-DD"))
 		appDate.setHours(0)
-
 
 		var receivedDate = new Date(moment(data.date).format("YYYY-MM-DD"))
 		receivedDate.setHours(0);
@@ -38,7 +36,7 @@ var AppDay = React.createClass({
 	render: function() {
 		var self = this;
 		this.appsDay = this.props.appDay;
-		var platform = this.props.platform;
+        var platform = this.props.platform;
 
 		var apps = this.appsDay.apps;
 		var totalCount = this.appsDay.totalCount;
