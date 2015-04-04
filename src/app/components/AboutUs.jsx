@@ -14,7 +14,6 @@ var AboutUs = React.createClass({
             paddingRight: 0,
             paddingLeft: 0,
             paddingTop:0,
-            marginTop: '1%',
             marginLeft: '1%',
             boxShadow: '0 1px 1px rgba(0, 0, 0, 0.12);'
         }
