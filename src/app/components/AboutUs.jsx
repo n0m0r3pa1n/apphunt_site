@@ -33,6 +33,7 @@ var AboutUs = React.createClass({
                 <a href="https://www.facebook.com/theapphunt" target="_blank"><img src="./res/img/facebook.png" style={imgStyle} /></a>
                 <a href="http://theapphunt.tumblr.com/" target="_blank"><img src="./res/img/tumblr.png" style={imgStyle} /></a>
                 <a href="https://apphunters.wordpress.com/" target="_blank"><img src="./res/img/wordpress.png" style={imgStyle} /></a>
+                <a href="https://www.youtube.com/channel/UCPnLaWyjNC6feTXUuhggJ-w" target="_blank"><img src="./res/img/youtube.png" style={imgStyle} /></a>
             </Paper>
         )
     },
