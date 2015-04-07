@@ -20,7 +20,7 @@ var AppHuntApp = React.createClass({
                             <p className="app-description">Find the best new apps, every day!</p>
                         </div>
                         <div className="col-md-4">
-
+                            <h3></h3>
                             <p>
                             {button}
                             </p>
