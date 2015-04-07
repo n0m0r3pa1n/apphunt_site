@@ -49,21 +49,21 @@ var Main = React.createClass({
         if(appId !== undefined) {
             AppAPI.getAppDetails(appId);
         }
-        return (
-            <div>
-                <AppBar showMenuIconButton={false} title="AppHunt - BEST NEW apps every day">
-                    <Paper/>
-                    <DropDownMenu className="pull-right" ref="categories" menuItems={menuItems} onChange={this._onMenuItemSelected}/>
-                </AppBar>
-                <AppDetails {...this.props}/>
-                <AboutUs />
-                <div className="container apps-container">
-                    <AppHuntApp/>
-                    <RouteHandler />
-                </div>
-            </div>
-        )
+		return (
+			<div>
+				<AppBar showMenuIconButton={false} title="AppHunt - BEST NEW apps every day">
+					<Paper/>
+					<DropDownMenu className="pull-right" ref="categories" menuItems={menuItems} onChange={this._onMenuItemSelected}/>
+					<AboutUs />
+				</AppBar>
+				<AppDetails {...this.props}/>
 
+				<div className="container apps-container">
+					<AppHuntApp/>
+					<RouteHandler />
+				</div>
+			</div>
+		)
 	}
 });
 

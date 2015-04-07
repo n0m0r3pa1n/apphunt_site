@@ -15,12 +15,12 @@ var AppHuntApp = React.createClass({
                         <div className="col-md-1">
                             <img src={"./res/img/apphunt-logo.png"} className="app-icon"/>
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-7">
                             <h3>AppHunt</h3>
                             <p className="app-description">Find the best new apps, every day!</p>
                         </div>
-                        <div className="col-md-3">
-                            <h3></h3>
+                        <div className="col-md-4">
+
                             <p>
                             {button}
                             </p>
