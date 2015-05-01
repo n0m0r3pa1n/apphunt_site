@@ -1,12 +1,34 @@
 var React = require("react"),
     {Paper} = require('material-ui');
 var GooglePlayButton = require('./buttons/GooglePlayButton');
+var AppleStoreButton = require('./buttons/AppleStoreButton');
 
+var AppsStore = require('../stores/AppsStore')
 var AppHuntApp = React.createClass({
+    getInitialState: function() {
+        return {platform: 'Android'}
+    },
+    componentDidMount: function() {
+        AppsStore.addChangeListener(this._onChange)
+    },
+    componentWillUnmount: function() {
+        AppsStore.removeChangeListener(this._onChange);
+    },
+
+    _onChange: function() {
+        var platform = AppsStore.getAppsData().platform;
+        console.log(platform)
+        this.setState({platform: platform})
+    },
+
 
 	render: function() {
-        var button = <GooglePlayButton url={"http://bit.ly/1xBGDSd"} />
-
+        var button;
+        if(this.state.platform == 'Android') {
+            button = <GooglePlayButton url={"http://bit.ly/1xBGDSd"} />
+        } else {
+            button = <AppleStoreButton url={"http://apple.co/1HqmC38"} />
+        }
 
         return (
             <Paper zDepth={2}>
@@ -21,9 +43,7 @@ var AppHuntApp = React.createClass({
                         </div>
                         <div className="col-md-3">
                             <h3></h3>
-                            <p>
                             {button}
-                            </p>
                         </div>
                     </div>
                 </div>
