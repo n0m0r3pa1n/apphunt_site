@@ -14,6 +14,8 @@ var NavUtils = require('../utils/NavUtils')
 var BrowserUtils = require('../utils/BrowserUtils')
 var injectTapEventPlugin = require("react-tap-event-plugin");
 
+var SocialShare = require('./details/SocialShare')
+
 var RightNav = React.createClass({
     mixins: [Classable, WindowListenable],
     propTypes: {
@@ -82,6 +84,7 @@ var RightNav = React.createClass({
                 <h3 className="text-center">AppHunt</h3>
             </footer>
 
+        console.log(BrowserUtils.isMobileDevice())
         if(BrowserUtils.isMobileDevice()){
             footer = ''
             marketButtonWidth = 120
@@ -139,6 +142,7 @@ var RightNav = React.createClass({
                             </div>
                         </div>
                     </div>
+                    <SocialShare url={window.location.href} imageUrl={app.icon} />
                     <div className="col-md-12" style={verticalAlign}>
                         <div className="col-md-5">
                             <img className="createdby-avatar img-circle" src={profilePicture} />
