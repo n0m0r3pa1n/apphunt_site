@@ -4,7 +4,7 @@
 //Define a custom less file to override any variables defined in scaffolding.less
 @import "custom-overrides.less";
 
-@import "node_modules/material-ui/src/less/components.less";
+@import "./../../node_modules/material-ui/src/less/components.less";
 
 //Your custom app styles
 .example-page {
@@ -12,7 +12,11 @@
   padding-top: 200px;
 }
 
+@mobile:      ~"only screen and (max-width: 529px)";
+@desktop:     ~"only screen and (min-width: 550px)";
+
 @right-nav-width: (@desktop-keyline-increment * 12);
+
 @right-nav-color: @white;
 @desktop-right-nav-menu-item-height: 48px;
 
@@ -21,7 +25,14 @@
   .mui-right-nav-menu {
     height: 100%;
     position: fixed;
-    width: @right-nav-width;
+    @media @mobile  {
+      width: 100%;
+    }
+
+    @media @desktop {
+      width: (@desktop-keyline-increment * 12);
+    }
+
     background-color: @right-nav-color;
     z-index: 10;
     right: 0px;

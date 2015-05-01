@@ -11,6 +11,7 @@ var React = require('react'),
     Menu = mui.Menu;
 
 var NavUtils = require('../utils/NavUtils')
+var BrowserUtils = require('../utils/BrowserUtils')
 var injectTapEventPlugin = require("react-tap-event-plugin");
 
 var RightNav = React.createClass({
@@ -39,7 +40,6 @@ var RightNav = React.createClass({
     },
 
     toggle: function () {
-
         this.setState({open: !this.state.open});
         return this;
     },
@@ -76,6 +76,18 @@ var RightNav = React.createClass({
             "./res/img/button-google-play.png" :
             "./res/img/button-app-store.png";
 
+        var marketButtonWidth = 200;
+        var footer =
+            <footer className="footer">
+                <h3 className="text-center">AppHunt</h3>
+            </footer>
+
+        if(BrowserUtils.isMobileDevice()){
+            footer = ''
+            marketButtonWidth = 120
+        }
+
+
         var containerStyle = {
             overflowY: "scroll"
         }
@@ -99,19 +111,20 @@ var RightNav = React.createClass({
             alignItems: "center",
             justifyContent: "center",
             flexDirection: "row",
-            marginTop: 20
+            marginTop: 20,
+            marginRight: 30
         }
         return (
             <div className={classes} >
-
-        {overlay}
+                {overlay}
                 <Paper style={containerStyle}
-                    ref="clickAwayableElement"
-                    className="mui-right-nav-menu"
-                    zDepth={2}
-                    rounded={false}>
+                       ref="clickAwayableElement"
+                       className="mui-right-nav-menu"
+                       zDepth={2}
+                       rounded={false}>
                     <div className="col-md-12 app-details">
                         <div className="row">
+                            <img onClick={this.close} style={{ width: 30}} src="./res/img/ic_close.png" className="pull-right" />
                             <img className="col-md-3" src={app.icon} />
                             <div className="col-md-6">
                                 <h1>{app.name}</h1>
@@ -128,13 +141,13 @@ var RightNav = React.createClass({
                     </div>
                     <div className="col-md-12" style={verticalAlign}>
                         <div className="col-md-5">
-                                <img className="createdby-avatar img-circle" src={profilePicture} />
-                                <span style={createdByStyle}>&nbsp;Posted by</span>
-                                <span style={usernameStyle}> @{username}</span>
+                            <img className="createdby-avatar img-circle" src={profilePicture} />
+                            <span style={createdByStyle}>&nbsp;Posted by</span>
+                            <span style={usernameStyle}> @{username}</span>
                         </div>
                         <div className="col-md-7">
                             <a href={app.shortUrl} target="_blank" style={marketButton}>
-                                <img src={marketButtonSrc} className="col-md-8 col-md-offset-2"/>
+                                <img src={marketButtonSrc} style={{width: marketButtonWidth}} className="col-md-offset-1"/>
                             </a>
                         </div>
                     </div>
@@ -142,10 +155,7 @@ var RightNav = React.createClass({
                         <hr />
                     </div>
                     <Voters votes={votes} />
-
-                    <footer className="footer">
-                        <h3 className="text-center">AppHunt</h3>
-                    </footer>
+                    {footer}
                 </Paper>
             </div>
         );
