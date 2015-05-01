@@ -3,20 +3,8 @@
     margin-bottom: 20px;
 }
 
-.mui-app-bar h1 {
+h1 {
     margin: 0px !important;
-}
-
-.mui-menu-label {
-    color: #ffffff !important;
-}
-
-.mui-drop-down-menu .mui-menu-control .mui-menu-control-bg {
-    background-color: #64b5f6 !important;
-}
-
-.mui-right-nav .mui-right-nav-menu {
-    /*width: 40% !important;*/
 }
 
 .app-icon {
@@ -60,7 +48,7 @@
 
 .app-votes-btn {
     color: white;
-    font-size:22px;
+    font-size:24px;
 }
 
 .createdby-avatar {
@@ -77,8 +65,7 @@
     bottom: 0;
     width: 100%;
     height: 60px;
-    background-color: #23a2eb;
-    color: #ffffff;
+    background-color: #f5f5f5;
 }
 
 .footer h3 {
@@ -90,13 +77,13 @@
     padding-top: 0px !important;
 }
 
-.app-day {
-    overflow: auto;
+.app-day-title {
+    margin-bottom: 600px;
 }
 
 .noScroll {
-    overflow: hidden !important;
-    /*position:fixed;*/
+    overflow: hidden;
+    position:fixed;
 }
 
 .mui-app-bar {
