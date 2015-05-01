@@ -4,6 +4,8 @@ var React = require("react"),
     RaisedButton = mui.RaisedButton;
     FontIcon = mui.FontIcon;
 
+var BrowserUtils = require('../utils/BrowserUtils')
+
 var AboutUs = React.createClass({
     getInitialState: function() {
         return {};
@@ -29,13 +31,25 @@ var AboutUs = React.createClass({
             display: "inline-block",
             marginTop: 10
         }
-        return (
-            <div className="pull-right">
+
+        var icons = <div className="pull-right">
+            <a href="https://twitter.com/TheAppHunt" target="_blank" className="social_icon_cont"><span className="sfmsb-icon-twitter sfmsb-circle" style={iconStyle}></span></a>
+            <a href="https://www.facebook.com/theapphunt" target="_blank" className="social_icon_cont"><span className="sfmsb-icon-facebook sfmsb-circle" style={iconStyle}></span></a>
+            <a href="http://theapphunt.tumblr.com/" target="_blank" className="social_icon_cont"><span className="sfmsb-icon-tumblr sfmsb-circle" style={iconStyle}></span></a>
+            <a href="https://apphunters.wordpress.com/" target="_blank" className="social_icon_cont"><span className="sfmsb-icon-wordpress sfmsb-circle" style={iconStyle}></span></a>
+            <a href="https://www.youtube.com/channel/UCPnLaWyjNC6feTXUuhggJ-w" target="_blank" className="social_icon_cont"><span className="sfmsb-icon-youtube sfmsb-circle" style={iconStyle}></span></a>
+        </div>
+
+        if(BrowserUtils.isMobileDevice()) {
+            icons = <div className="pull-right">
                 <a href="https://twitter.com/TheAppHunt" target="_blank" className="social_icon_cont"><span className="sfmsb-icon-twitter sfmsb-circle" style={iconStyle}></span></a>
                 <a href="https://www.facebook.com/theapphunt" target="_blank" className="social_icon_cont"><span className="sfmsb-icon-facebook sfmsb-circle" style={iconStyle}></span></a>
-                <a href="http://theapphunt.tumblr.com/" target="_blank" className="social_icon_cont"><span className="sfmsb-icon-tumblr sfmsb-circle" style={iconStyle}></span></a>
-                <a href="https://apphunters.wordpress.com/" target="_blank" className="social_icon_cont"><span className="sfmsb-icon-wordpress sfmsb-circle" style={iconStyle}></span></a>
-                <a href="https://www.youtube.com/channel/UCPnLaWyjNC6feTXUuhggJ-w" target="_blank" className="social_icon_cont"><span className="sfmsb-icon-youtube sfmsb-circle" style={iconStyle}></span></a>
+            </div>
+        }
+
+        return (
+            <div className="pull-right">
+                {icons}
             </div>
         )
     },
