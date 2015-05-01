@@ -84,7 +84,6 @@ var RightNav = React.createClass({
                 <h3 className="text-center">AppHunt</h3>
             </footer>
 
-        console.log(BrowserUtils.isMobileDevice())
         if(BrowserUtils.isMobileDevice()){
             footer = ''
             marketButtonWidth = 120
