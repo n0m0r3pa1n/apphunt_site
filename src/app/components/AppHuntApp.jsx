@@ -17,10 +17,11 @@ var AppHuntApp = React.createClass({
 
     _onChange: function() {
         var platform = AppsStore.getAppsData().platform;
-        console.log(platform)
         this.setState({platform: platform})
     },
-
+    _openHome: function() {
+        window.location.href="#/"
+    },
 
 	render: function() {
         var button;
@@ -32,7 +33,7 @@ var AppHuntApp = React.createClass({
 
         return (
             <Paper zDepth={2}>
-                <div className="container apps-container">
+                <div className="container apps-container" onClick={this._openHome}>
                     <div className="row col-md-12 appRow">
                         <div className="col-md-1">
                             <img src={"./res/img/apphunt-logo.png"} className="app-icon"/>

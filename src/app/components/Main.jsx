@@ -53,7 +53,6 @@ var Main = React.createClass({
         var actionBarTitle = BrowserUtils.isMobileDevice() ?  'AppHunt' : 'AppHunt - BEST NEW apps every day'
         return (
             <div>
-
                 <AppBar showMenuIconButton={false} title={actionBarTitle}>
                     <Paper/>
                     <DropDownMenu className="pull-right" ref="categories" menuItems={menuItems} onChange={this._onMenuItemSelected}/>
