@@ -15,7 +15,7 @@
     var routes = (
         <Route>
             <Route handler={Main} path="/">
-                <Route handler={AppsList} name="apps" path="apps/:appId" />
+                <Route handler={AppsList} name="apps" path="apps/:appId/details" />
                 <Route handler={Unsubscribe} name="mails" path="unsubscribe" />
                 <DefaultRoute handler={AppsList} />
             </Route>

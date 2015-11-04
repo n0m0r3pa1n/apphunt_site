@@ -21,7 +21,7 @@ var AppRow = React.createClass({
 		return getAppState();
 	},
 	loadAppDetails: function() {
-        NavUtils.setUrl('apps/' + this.appId)
+        NavUtils.setUrl('apps/' + this.appId + '/details')
 		AppAPI.getAppDetails(this.appId);
 	},
 	render: function() {
