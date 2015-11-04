@@ -6,6 +6,7 @@
         Privacy = require('./components/Privacy.js'),
         AppsList = require('./components/appslist/AppsList.jsx'),
         Unsubscribe = require('./components/mails/Unsubscribe.jsx'),
+        PersonalAppPage = require('./components/PersonalAppPage.jsx'),
         Router = require("react-router"),
         Route = Router.Route,
         HashLocation = Router.HashLocation,
@@ -14,6 +15,7 @@
 
     var routes = (
         <Route>
+            <Route handler={PersonalAppPage} name="personal_app_page" path="apps/:appId" />
             <Route handler={Main} path="/">
                 <Route handler={AppsList} name="apps" path="apps/:appId/details" />
                 <Route handler={Unsubscribe} name="mails" path="unsubscribe" />
@@ -25,8 +27,10 @@
     );
 
     Router.run(routes, HashLocation, function (Handler, state) {
+        console.log(state)
         var params = state.params;
-        React.render(<Handler params={params} />, document.body);
+        var query = state.query;
+        React.render(<Handler params={params} query={query} />, document.body);
     });
 
     injectTapEventPlugin();

@@ -28,7 +28,7 @@ var AppDetails = React.createClass({
 		AppStore.addLoadAppDetailsListener(this._loadAppDetails)
 	},
 	componentWillUnmount: function() {
-		AppStore.addLoadAppDetailsListener(this._loadAppDetails);
+		AppStore.removeLoadAppDetailsListener(this._loadAppDetails);
 	},
 	urlChanged: function(route) {
 		if(route.path === "/") {

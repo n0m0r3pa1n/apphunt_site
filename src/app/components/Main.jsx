@@ -46,10 +46,6 @@ var Main = React.createClass({
         AppsAPI.getApps(menuItem.text);
     },
     render: function() {
-        var appId = this.props.params.appId;
-        if(appId !== undefined) {
-            AppAPI.getAppDetails(appId);
-        }
         var actionBarTitle = BrowserUtils.isMobileDevice() ?  'AppHunt' : 'AppHunt - BEST NEW apps every day'
         return (
             <div>
@@ -62,7 +58,7 @@ var Main = React.createClass({
 
                 <div className="container apps-container">
                     <AppHuntApp/>
-                    <RouteHandler />
+                    <RouteHandler {...this.props}/>
                 </div>
             </div>
         )
