@@ -1,3 +1,7 @@
+## What is this about?
+
+This is the main repository of the AppHunt website: http://www.theapphunt.com .
+
 ## Installation
 After cloning the repository, install dependencies:
 ```
